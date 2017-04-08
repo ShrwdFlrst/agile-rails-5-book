@@ -51,4 +51,7 @@ update-locale LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
 install rvm rvm
 
-echo "Run 'gem install rails --version=5.0.0.1 --no-ri --no-rdoc' to install Rails"
+# echo "Run 'gem install rails --version=5.0.0.1 --no-ri --no-rdoc' to install Rails"
+# rvm gemset create rails5001
+# gem install rails -v 5.0.0.1 --no-ri --no-rdoc
+# add export PATH="/home/ubuntu/.rvm/gems/ruby-2.4.0/bin:$PATH"
