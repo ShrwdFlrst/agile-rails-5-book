@@ -55,3 +55,4 @@ install rvm rvm
 # rvm gemset create rails5001
 # gem install rails -v 5.0.0.1 --no-ri --no-rdoc
 # add export PATH="/home/ubuntu/.rvm/gems/ruby-2.4.0/bin:$PATH"
+# bin/rails s -b 0.0.0.0

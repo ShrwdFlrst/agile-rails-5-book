@@ -11,4 +11,9 @@ class SayControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get experiments" do
+    get say_experiments_url
+    assert_response :success
+  end
+
 end
