@@ -13,6 +13,9 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     get products_url
+    assert_select 'h1', 'Products'
+    product = products(:ruby)
+    assert_select 'dt', @product.title
     assert_response :success
   end
 
@@ -37,11 +40,13 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should get edit" do
     get edit_product_url(@product)
     assert_response :success
+    assert_select "#product_title[value=?]", @product.title
   end
 
   test "should update product" do
     patch product_url(@product), params: { product: @update }
     assert_redirected_to product_url(@product)
+    assert_select "#product_title[value=?]", @product.title
   end
 
   test "should destroy product" do
