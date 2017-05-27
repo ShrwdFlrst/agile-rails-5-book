@@ -5,7 +5,7 @@ class CombineItemsInCart < ActiveRecord::Migration[5.0]
 
       sums.each do |product_id, quantity|
         if quantity > 1
-          cart.line_items.where(product_id: product_id)
+          cart.line_items.where(product_id: product_id).delete_all
 
           item = cart.line_items.build(product_id: product_id)
           item.quantity = quantity
@@ -24,7 +24,7 @@ class CombineItemsInCart < ActiveRecord::Migration[5.0]
           quantity: 1
         )
       end
-      
+
       line_item.destroy
     end
   end
