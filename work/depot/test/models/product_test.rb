@@ -55,4 +55,26 @@ class ProductTest < ActiveSupport::TestCase
     assert product.invalid?
     assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
   end
+
+  test "product must have unique image url" do
+    product = Product.new(
+      title: "some title",
+      description: "yyy",
+      price: 1,
+      image_url: products(:ruby).image_url
+    )
+    assert product.invalid?
+    assert_equal [I18n.translate('errors.messages.taken')], product.errors[:image_url]
+  end
+
+  test "product price can't be too high" do
+    product = Product.new(
+      title: "some title",
+      description: "yyy",
+      price: Product::MAX_PRICE + 1,
+      image_url: "image.png"
+    )
+    assert product.invalid?
+    assert_equal ['Price is too high'], product.errors[:price]
+  end
 end
