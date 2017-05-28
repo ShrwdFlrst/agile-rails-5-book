@@ -3,6 +3,8 @@ require 'test_helper'
 class LineItemsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @line_item = line_items(:one)
+    @cart = carts(:one)
+    # session[:cart_id] = @cart.id
   end
 
   test "should get index" do
@@ -51,10 +53,17 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy line_item" do
+    cart = @line_item.cart
     assert_difference('LineItem.count', -1) do
       delete line_item_url(@line_item)
     end
 
-    assert_redirected_to line_items_url
+    assert_redirected_to cart
+
+    assert_difference('LineItem.count', -1) do
+      delete line_item_url(line_items(:three))
+    end
+    
+    assert_redirected_to store_index_url
   end
 end
