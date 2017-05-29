@@ -14,6 +14,11 @@
     </div>
     <div id="columns">
       <div id="side">
+        <div id="cart">
+          <% unless @cart.nil? %>
+            <%= render @cart %>
+          <% end %>
+        </div>
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="#">Questions</a></li>
