@@ -32,7 +32,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart }
+        format.html { redirect_to store_index_url }
         format.json { render :show,
           status: :created, location: @line_item }
       else
@@ -65,8 +65,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        url = cart.line_items.size > 0 ? cart : store_index_url
-        redirect_to url, notice: 'Item removed.'
+        redirect_to store_index_url, notice: 'Item removed.'
       }
       format.json { head :no_content }
     end
