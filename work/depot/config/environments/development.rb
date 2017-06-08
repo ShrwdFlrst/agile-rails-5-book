@@ -54,4 +54,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::FileUpdateChecker
 
   config.action_cable.disable_request_forgery_protection = true
+  config.web_console.whitelisted_ips = '10.0.2.2'
 end
