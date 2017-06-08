@@ -72,7 +72,7 @@ class LineItemsController < ApplicationController
       format.html {
         redirect_to store_index_url, notice: 'Item removed.'
       }
-      format.js
+      format.js { @current_item = @line_item }
       format.json { head :no_content }
     end
   end
